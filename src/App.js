@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import Prueba from './componentes/prueba.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -17,6 +22,7 @@ function App() {
         >
           Learn React
         </a>
+        <Prueba />
       </header>
     </div>
   );
