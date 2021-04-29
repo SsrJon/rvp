@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      {/* <header className="App-header">
+        /*<img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -23,7 +23,19 @@ function App() {
           Learn React
         </a>
         <Prueba />
-      </header>
+      </header> */}
+       <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <h2 id="subtitulo">En esta plataforma encontraras videos en formatos unicos</h2>
+
+    <div id="botones">
+      <button class="botones"><a href="21:9" class="textobotones">21:9</a></button>
+      <button class="botones"><a href="2k" class="textobotones">2K</a></button>
+      <button class="botones"><a href="4k" class="textobotones">4K</a></button>
+      
+    </div>
+  </div>
+  
     </div>
   );
 }
