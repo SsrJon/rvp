@@ -5,6 +5,18 @@ class VideoDataService {
     return http.get("/videos");
   }
 
+  getUltraWide() {
+    return http.get("/videos/ultrawide");
+  }
+
+  getQHD() {
+    return http.get("/videos/qhd");
+  }
+
+  getUHD() {
+    return http.get("/videos/uhd");
+  }
+
   /* get(id) {
     return http.get(`/videos/${id}`);
   }

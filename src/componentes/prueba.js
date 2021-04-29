@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VideoDataService from "../services/video.service";
-import { Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 export default class Prueba extends Component {
 
@@ -13,6 +13,11 @@ export default class Prueba extends Component {
             <p>Click en el boton para mostrar videos. (console.log)</p>
             
             <button class="btn btn-primary" onClick={hola}>Click aqui</button>
+            
+            <Link to="/page2"><button>
+              Go to Page 2 
+            </button>
+            </Link>
         </div>
         )
     }

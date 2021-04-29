@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import Prueba from './componentes/prueba.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link } from "react-router-dom";
 
 
 function App() {
@@ -25,16 +26,15 @@ function App() {
         <Prueba />
       </header> */}
        <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root">
-    <h2 id="subtitulo">En esta plataforma encontraras videos en formatos unicos</h2>
+      <div id="root">
+        <h2 id="subtitulo">En esta plataforma encontraras videos en formatos unicos</h2>
 
-    <div id="botones">
-      <button class="botones"><a href="21:9" class="textobotones">21:9</a></button>
-      <button class="botones"><a href="2k" class="textobotones">2K</a></button>
-      <button class="botones"><a href="4k" class="textobotones">4K</a></button>
-      
-    </div>
-  </div>
+        <div id="botones">
+          <button className="botones"><Link className="textobotones" to={{ pathname: "/videos", state: '21:9' }} >21:9</Link></button>
+          <button className="botones"><Link className="textobotones" to={{ pathname: "/videos", state: '1440' }} >1440</Link></button>
+          <button className="botones"><Link className="textobotones" to={{ pathname: "/videos", state: '4k' }} >4K</Link></button>      
+        </div>
+      </div>
   
     </div>
   );
