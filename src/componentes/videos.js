@@ -14,23 +14,39 @@ export default class Videos extends Component {
  
     forceUpdateHandler(){
         this.forceUpdate();
+        // hastalapolla(videos);
       };
     render() {
         return(  
-        <div>
-            <h1>Hola</h1>
-            <p>{this.props.location.state}</p>
-            <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button>
-        
-            {JSON.stringify(videos)}
+            <div>
+
+                <p>{this.props.location.state}</p>
+                <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button>
             
-        </div>
+               
+                <h1 class="mb-5">Videos {this.props.location.state}</h1>
+                
+                <div class="d-flex flex-wrap flex-row justify-content-around">
+                    {videos.map((video, i) => {     
+                        console.log("Entered");                 
+                        // Return the element. Also pass key     
+                        return (
+                                
+                                <div class="col-3">
+                                    <img width="280" height="250" class="img-fluid" src={video['miniatura']}/>
+                                    <h2><p>{video['nombre']}</p></h2>
+                                </div>
+                              
+                        ) 
+                    })}
+                </div>
+        
+            </div>
         )
-    }
-    
+    }}
 
 
-}
+
 
 function cargaVideos(tipoVideo) {
     /* console.log(tipoVideo); */
@@ -50,6 +66,9 @@ function cargaVideos(tipoVideo) {
         VideoDataService.getQHD()
         .then(response => {
             console.log(response.data);
+            videos=response.data;
+            console.log(videos);
+            Videos.forceUpdateHandler();    
         })
         .catch(e => {
             console.log(e);
@@ -59,6 +78,9 @@ function cargaVideos(tipoVideo) {
         VideoDataService.getUHD()
         .then(response => {
             console.log(response.data);
+            videos=response.data;
+            console.log(videos);
+            Videos.forceUpdateHandler();    
         })
         .catch(e => {
             console.log(e);
