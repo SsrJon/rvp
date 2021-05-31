@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import Videos from "./componentes/videos";
+import Play from "./componentes/play";
 import Prueba from "./componentes/prueba";
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
        <Switch>
         <Route exact path="/" component={App} />
         <Route path="/videos" component={Videos} />
+        <Route path="/play" component={Play} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
