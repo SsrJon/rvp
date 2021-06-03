@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'video-react/dist/video-react.css';
-import { Player } from 'video-react';
+import { Player, ControlBar, PlaybackRateMenuButton, ClosedCaptionButton, LoadingSpinner } from 'video-react';
 
 export default class Play extends Component {
 
@@ -10,23 +10,36 @@ export default class Play extends Component {
         if(this.props.location.state){
             localStorage.setItem('playVideo', JSON.stringify(this.props.location.state));
         }
-        /* cargaVideos(JSON.parse(localStorage.getItem('playVideo'))); */
     }
 
     render() {
         return(  
-        <div>
-            <Player>
-                <source autoPlay src={JSON.parse(localStorage.getItem('playVideo'))} />
+        <div id="play">
+            <Player fluid  autoPlay>
+                <source src={JSON.parse(localStorage.getItem('playVideo'))} />
+                <LoadingSpinner />
+                {/* Subtitulos, opcional */}
+                {/* <track
+                    kind="captions"
+                    src=""
+                    srcLang="es"
+                    label="Spanish"
+                    default
+                />
+                <track
+                    kind="captions"
+                    src=""
+                    srcLang="en"
+                    label="English"
+                /> */}
+                <ControlBar>
+                    <PlaybackRateMenuButton rates={[2, 1.5, 1, 0.75, 0.5, 0.25]} order={8} />
+                    <ClosedCaptionButton order={7} />
+                </ControlBar>
             </Player>
         </div>
         )
     }
 
 
-}
-
-function hola() {
-    console.log("esto es una prueba");
-    
 }

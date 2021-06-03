@@ -3,4 +3,5 @@ npx create-react-app rvp
 npm install bootstrap
 npm install react-router-dom
 npm install axios
+npm install jquery --save
 npm install --save video-react react react-dom

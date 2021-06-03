@@ -2,6 +2,7 @@ import { Modal } from 'bootstrap';
 import React, { Component } from 'react';
 import VideoDataService from "../services/video.service";
 import {Link } from "react-router-dom";
+import $ from "jquery";
 var videos=[{nombre: 'paco', anos: 'ww'}];
 
 export default class Videos extends Component {
@@ -11,7 +12,7 @@ export default class Videos extends Component {
         this.state = {
             link:"",
             videos:[]
-        }   
+        }
        /*  console.log(this.props.location.state);  */
         if(this.props.location.state){
             localStorage.setItem('tipoVideo', JSON.stringify(this.props.location.state));
@@ -21,15 +22,12 @@ export default class Videos extends Component {
         this.cargaVideos = this.cargaVideos.bind(this);
         this.cargaVideos(JSON.parse(localStorage.getItem('tipoVideo')));
     }
-    /* forceUpdateHandler(){
-        this.forceUpdate();
-        // hastalapolla(videos);
-    }; */
     cargarModal(video){
-        document.getElementById("modalPeliculas").style.display="block";
+        /* document.getElementById("modalPeliculas").style.display="block"; */
         document.getElementById("titulo").innerHTML = video['nombre'] ;
-        document.getElementById("tipo").innerHTML =video['tipo'] ;
+        /* document.getElementById("tipo").innerHTML =video['tipo'] ; */
         document.getElementById("descripcion").innerHTML = video['descripcion'];
+        document.getElementById("miniatura").src = video['miniatura'];
         this.setState({link: video['link'],}); 
     };
     cargaVideos(tipoVideo) {
@@ -77,7 +75,7 @@ export default class Videos extends Component {
 
     render() {
         return(  
-            <div>
+            <div id="videos">
                 {/* <p>{this.props.location.state}</p> */}
                 {/* <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button> */}
                 <h1 class="mb-5">Videos {this.props.location.state}</h1>
@@ -86,24 +84,56 @@ export default class Videos extends Component {
                         console.log("Entered");                 
                         // Return the element. Also pass key   
                         return (  
-                            <div class="tarjetaVideo" class="col-3" onClick={() => this.cargarModal(video)}>
+                            <div class="tarjetaVideo" class="col-3"  data-toggle="modal" data-target="#modalVideo" onClick={() => this.cargarModal(video)}>
                                 <img width="280" height="250" class="img-fluid" id={i} src={video['miniatura']}/>
-                                <video width="300" height="200">
+                                {/* <video width="300" height="200">
                                     <source src={video['link']} type="video/mp4" />
-                                </video>
+                                </video> */}
                                 <h2><p>{video['nombre']}</p></h2>
                             </div>   
                         ) 
                     })}
-                     <div class='modal' id="modalPeliculas">
+
+                    <div class="modal fade fondo" id="modalVideo" tabindex="-1" aria-labelledby="titulo" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content ">
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title" id="titulo"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body ">
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <img width="280" id="miniatura" height="250" class="img-fluid" />
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="float-left mt-5">
+                                            <label id="descripcion"></label>
+                                            <br/>
+                                            <button class="btn btn-info" onClick={() => cerrarModal()}><Link class="btnModal" to={{ pathname: "/play", state: this.state.link }}>Reproducir</Link></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="modal-footer border-0">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     {/* <div class='modal' id="modalPeliculas">
                         <button id="cerrarModal" onClick={()=>cerrarModal()}>Cerrar</button> 
                         <img></img>
                         <h5>Titulo = <label id="titulo"></label></h5>
                         <h5>Tipo = <label id="tipo"></label></h5>
                         <h5>Descripcion = <label id="descripcion"></label></h5>
                         <h5>Link = <label id="link"></label></h5>
-                        <button><Link /* className="textobotones" */ to={{ pathname: "/play", state: this.state.link }} >Reproducir</Link></button> 
-                    </div>
+                        <h5>Miniatura = <label id="miniatura"></label></h5>
+                        <button><Link to={{ pathname: "/play", state: this.state.link }} >Reproducir</Link></button> 
+                    </div> */}
                 </div>
             </div>
         )
@@ -111,32 +141,10 @@ export default class Videos extends Component {
 }
 
 function cerrarModal(){
-    document.getElementById("modalPeliculas").style.display="none";
+    /* document.getElementById("modalPeliculas").style.display="none"; */
+    $('#modalVideo').modal('hide'); 
 }
 
-function egtVideoImage(path, secs, callback) {
-    var me = this, video = document.createElement('video');
-    video.onloadedmetadata = function() {
-        if ('function' === typeof secs) {
-        secs = secs(this.duration);
-        }
-        this.currentTime = Math.min(Math.max(0, (secs < 0 ? this.duration : 0) + secs), this.duration);
-    };
-    video.onseeked = function(e) {
-        var canvas = document.createElement('canvas');
-        canvas.height = video.videoHeight;
-        canvas.width = video.videoWidth;
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        var img = new Image();
-        img.src = canvas.toDataURL();
-        callback.call(me, img, this.currentTime, e);
-    };
-    video.onerror = function(e) {
-        callback.call(me, undefined, undefined, e);
-    };
-    video.src = path;
-}
       
     
 

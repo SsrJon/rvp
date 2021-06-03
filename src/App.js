@@ -10,6 +10,7 @@ import {Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
+      
       {/* <header className="App-header">
         /*<img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -27,6 +28,7 @@ function App() {
       </header> */}
        <noscript>You need to enable JavaScript to run this app.</noscript>
       <div id="root">
+
         <h2 id="subtitulo">En esta plataforma encontraras videos en formatos unicos</h2>
 
         <div id="botones">
