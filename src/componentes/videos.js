@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import VideoDataService from "../services/video.service";
 import {Link } from "react-router-dom";
 import $ from "jquery";
+import HoverVideoPlayer from 'react-hover-video-player';
 var videos=[{nombre: 'paco', anos: 'ww'}];
 
 export default class Videos extends Component {
@@ -27,7 +28,7 @@ export default class Videos extends Component {
         document.getElementById("titulo").innerHTML = video['nombre'] ;
         /* document.getElementById("tipo").innerHTML =video['tipo'] ; */
         document.getElementById("descripcion").innerHTML = video['descripcion'];
-        document.getElementById("miniatura").src = video['miniatura'];
+        document.getElementById("miniatura").src = "Imagenes/miniaturas/"+video['miniatura'];
         this.setState({link: video['link'],}); 
     };
     cargaVideos(tipoVideo) {
@@ -85,7 +86,30 @@ export default class Videos extends Component {
                         // Return the element. Also pass key   
                         return (  
                             <div class="tarjetaVideo" class="col-3"  data-toggle="modal" data-target="#modalVideo" onClick={() => this.cargarModal(video)}>
-                                <img width="280" height="250" class="img-fluid" id={i} src={video['miniatura']}/>
+                                {/* <img width="280" height="250" class="img-fluid" id={i} src={video['miniatura']}/> */}
+                                <HoverVideoPlayer
+                                    videoSrc={"Videos/"+video['link']}
+                                    restartOnPaused
+                                    controlsList="nodownload nofullscreen"
+                                    disablePictureInPicture={true}
+                                    pausedOverlay={
+                                        <img
+                                        src={"Imagenes/miniaturas/" + video['miniatura']}
+                                        
+                                        alt=""
+                                        style={{
+                                            // Make the image expand to cover the video's dimensions
+                                            
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "fill",
+                                        }}
+                                        />
+                                    }
+                                    loadingOverlay={
+                                        <div className="loading-spinner-overlay" />
+                                    }
+                                />
                                 {/* <video width="300" height="200">
                                     <source src={video['link']} type="video/mp4" />
                                 </video> */}

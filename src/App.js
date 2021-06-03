@@ -29,7 +29,7 @@ function App() {
        <noscript>You need to enable JavaScript to run this app.</noscript>
       <div id="root">
 
-        <h2 id="subtitulo">En esta plataforma encontraras videos en formatos unicos</h2>
+        <h2 id="subtitulo">En esta plataforma encontrarás vídeos en formatos únicos</h2>
 
         <div id="botones">
           <button className="botones"><Link className="textobotones" to={{ pathname: "/videos", state: '21:9' }} >21:9</Link></button>

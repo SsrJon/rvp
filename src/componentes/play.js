@@ -16,7 +16,7 @@ export default class Play extends Component {
         return(  
         <div id="play">
             <Player fluid  autoPlay>
-                <source src={JSON.parse(localStorage.getItem('playVideo'))} />
+                <source src={"Videos/"+JSON.parse(localStorage.getItem('playVideo'))} />
                 <LoadingSpinner />
                 {/* Subtitulos, opcional */}
                 {/* <track
