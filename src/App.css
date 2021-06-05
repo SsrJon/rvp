@@ -115,3 +115,57 @@ code {
 .fondo{
   background-color: rgba(57, 65, 73, 0.808);
 }
+.video-react-play-control.video-react-control.video-react-button.video-react-paused{
+  color:rgb(255, 217, 0);
+}
+.video-react-play-control.video-react-control.video-react-button.video-react-playing{
+  color:rgb(255, 217, 0);
+}
+.video-react-volume-menu-button-horizontal.video-react-vol-3.video-react-volume-menu-button.video-react-menu-button-inline.video-react-control.video-react-button.video-react-menu-button{
+  color:rgb(255, 217, 0);
+}
+.video-react-volume-menu-button-horizontal.video-react-vol-2.video-react-volume-menu-button.video-react-menu-button-inline.video-react-control.video-react-button.video-react-menu-button{
+  color:rgb(255, 217, 0);
+}
+.video-react-volume-menu-button-horizontal.video-react-vol-1.video-react-volume-menu-button.video-react-menu-button-inline.video-react-control.video-react-button.video-react-menu-button{
+  color:rgb(255, 217, 0);
+}
+.video-react-volume-bar.video-react-slider-bar.video-react-slider-horizontal.video-react-slider >.video-react-volume-level{
+  background-color:rgb(255, 217, 0);
+}
+.video-react-current-time.video-react-time-control.video-react-control{
+  color:rgb(255, 217, 0);
+}
+.video-react-time-control.video-react-time-divider{
+  color:rgb(255, 217, 0);
+}
+.video-react-duration.video-react-time-control.video-react-control{
+  color:rgb(255, 217, 0);
+}
+.video-react-play-progress.video-react-slider-bar .video-react-load-progress{
+  background-color:rgb(255, 217, 0);
+}
+.video-react-closed-caption.video-react-menu-button-popup.video-react-control.video-react-button.video-react-menu-button{
+  color:rgb(255, 217, 0);
+}
+.video-react-playback-rate-value{
+  color:rgb(255, 217, 0);
+}
+.video-react-icon-fullscreen.video-react-fullscreen-control.video-react-control.video-react-button.video-react-icon{
+  color:rgb(255, 217, 0);
+}
+.video-react-play-progress.video-react-slider-bar{
+  background-color:rgb(255, 217, 0) !important;
+}
+.video-react-load-progress{
+  background-color:rgb(255, 217, 0) !important;
+  opacity: 0.5;
+}
+.video-react .video-react-time-tooltip, .video-react .video-react-play-progress:before, .video-react .video-react-play-progress:after{
+  color:rgb(255, 217, 0) !important;
+
+}
+.video-react-control-bar.video-react-control-bar-auto-hide{
+  background-color:rgba(0, 0, 0, 0.234) !important;
+  
+}
