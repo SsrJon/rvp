@@ -52,7 +52,7 @@ export default class Videos extends Component {
                 console.log(videob['nombre']);
                     if (textoBusqueda == videob['nombre']) {
                         console.log("EXITO EXITO EXITO EXITO");
-                        alert
+                        alert();
                     }
                 });
             })
@@ -197,8 +197,33 @@ export default class Videos extends Component {
  
 
 
+function buscar () {
 
+ 
+    
+        var textoBusqueda;
+    
+        var tolosvideos=[];
+    
+        
+        // console.log(textoBusqueda);
+        VideoDataService.getAll().then(response => {
+            
+            tolosvideos = response.data;
+            textoBusqueda =  $('#barraBusqueda').val();
+            // alert(tolosvideos['titulo']);
+            tolosvideos.forEach(videob => {
+            console.log(videob['nombre']);
+                if (textoBusqueda == videob['nombre']) {
+                    console.log("EXITO EXITO EXITO EXITO");
+                    alert("este video se encuentra en "+videob['tipo']);
+                }
+            });
+        })
+    
+}
 
+$('#botonBusqueda').on('click',buscar);
 
 
 
