@@ -52,7 +52,7 @@ export default class Videos extends Component {
                 console.log(videob['nombre']);
                     if (textoBusqueda == videob['nombre']) {
                         console.log("EXITO EXITO EXITO EXITO");
-                        
+                        alert
                     }
                 });
             })
