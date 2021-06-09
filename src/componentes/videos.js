@@ -19,10 +19,12 @@ export default class Videos extends Component {
             localStorage.setItem('tipoVideo', JSON.stringify(this.props.location.state));
         }
         /* this.forceUpdateHandler = this.forceUpdateHandler.bind(this); */
+        this.buscar();
         this.cargarModal = this.cargarModal.bind(this);
         this.cargaVideos = this.cargaVideos.bind(this);
         this.cargaVideos(JSON.parse(localStorage.getItem('tipoVideo')));
     }
+    
     cargarModal(video){
         /* document.getElementById("modalPeliculas").style.display="block"; */
         document.getElementById("titulo").innerHTML = video['nombre'] ;
@@ -31,6 +33,32 @@ export default class Videos extends Component {
         document.getElementById("miniatura").src = "Imagenes/miniaturas/"+video['miniatura'];
         this.setState({link: video['link'],}); 
     };
+    buscar () {
+
+        $('#botonBusqueda').on('click',function () {
+        
+            var textoBusqueda;
+        
+            var tolosvideos=[];
+        
+            
+            // console.log(textoBusqueda);
+            VideoDataService.getAll().then(response => {
+                
+                tolosvideos = response.data;
+                textoBusqueda =  $('#barraBusqueda').val();
+                // alert(tolosvideos['titulo']);
+                tolosvideos.forEach(videob => {
+                console.log(videob['nombre']);
+                    if (textoBusqueda == videob['nombre']) {
+                        console.log("EXITO EXITO EXITO EXITO");
+                        
+                    }
+                });
+            })
+        });
+    };
+
     cargaVideos(tipoVideo) {
         /* console.log(tipoVideo); */
         if(tipoVideo==="21:9"){
@@ -163,6 +191,17 @@ export default class Videos extends Component {
         )
     }
 }
+
+
+    
+ 
+
+
+
+
+
+
+
 
 function cerrarModal(){
     /* document.getElementById("modalPeliculas").style.display="none"; */
